@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fbcebd4c-9738-4ca6-80d0-14a956424fac" name="Changes" comment="" />
+    <list default="true" id="fbcebd4c-9738-4ca6-80d0-14a956424fac" name="Changes" comment="add all settings">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server_m2_prometheus.go" beforeDir="false" afterPath="$PROJECT_DIR$/server_m2_prometheus.go" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,7 +46,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Build.go build server_m1.go">
+  <component name="RunManager" selected="Go Build.go build server_m2_prometheus.go">
     <configuration name="go build server.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="go-echo-middleware" />
       <working_directory value="$PROJECT_DIR$" />
@@ -62,8 +65,18 @@
       <filePath value="$PROJECT_DIR$/server_m1.go" />
       <method v="2" />
     </configuration>
+    <configuration name="go build server_m2_prometheus.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="go-echo-middleware" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <package value="learnmiddleware" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/server_m2_prometheus.go" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Build.go build server_m2_prometheus.go" />
         <item itemvalue="Go Build.go build server_m1.go" />
         <item itemvalue="Go Build.go build server.go" />
       </list>
@@ -83,6 +96,11 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="start add promethus" />
+    <MESSAGE value="add all settings" />
+    <option name="LAST_COMMIT_MESSAGE" value="add all settings" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
