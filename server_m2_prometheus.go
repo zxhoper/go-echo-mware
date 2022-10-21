@@ -1,49 +1,24 @@
 package main
 
 import (
-	"net/http"
-	"strconv"
-	"sync"
-	"time"
-
 	"github.com/labstack/echo/v4"
+	"net/http"
 )
-
-type (
-	Stats struct {
-		Uptime       time.Time      `json:"uptime"`
-		RequestCount uint64         `json:"requestCount"`
-		Statuses     map[string]int `json:"statuses"`
-		mutex        sync.RWMutex
-	}
-)
-
-func NewStats() *Stats {
-	return &Stats{
-		Uptime:   time.Now(),
-		Statuses: map[string]int{},
-	}
-}
 
 // Process is the middleware function.
-func (s *Stats) Process(next echo.HandlerFunc) echo.HandlerFunc {
+func Process(next echo.HandlerFunc) echo.HandlerFunc {
 	return func(c echo.Context) error {
 		if err := next(c); err != nil {
 			c.Error(err)
 		}
-		s.mutex.Lock()
-		defer s.mutex.Unlock()
-		s.RequestCount++
-		status := strconv.Itoa(c.Response().Status)
-		s.Statuses[status]++
+		// TODO: something
 		return nil
 	}
 }
 
 // Handle is the endpoint to get stats.
-func (s *Stats) Handle(c echo.Context) error {
-	s.mutex.RLock()
-	defer s.mutex.RUnlock()
+func Handle(c echo.Context) error {
+	s := "Hit stats endpoint"
 	return c.JSON(http.StatusOK, s)
 }
 
@@ -69,9 +44,8 @@ func main() {
 	// Custom middleware
 	//-------------------
 	// Stats
-	s := NewStats()
-	e.Use(s.Process)
-	e.GET("/stats", s.Handle) // Endpoint to get stats
+	e.Use(Process)
+	e.GET("/stats", Handle) // Endpoint to main process
 
 	// Server header
 	e.Use(ServerHeader)
