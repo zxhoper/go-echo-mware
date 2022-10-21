@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fbcebd4c-9738-4ca6-80d0-14a956424fac" name="Changes" comment="add all settings">
+    <list default="true" id="fbcebd4c-9738-4ca6-80d0-14a956424fac" name="Changes" comment="update idea workspace">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/server.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server_m1.go" beforeDir="false" afterPath="$PROJECT_DIR$/server_m1.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server_m2_prometheus.go" beforeDir="false" afterPath="$PROJECT_DIR$/server_m2_prometheus.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -86,6 +88,17 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
+  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -100,7 +113,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="start add promethus" />
     <MESSAGE value="add all settings" />
-    <option name="LAST_COMMIT_MESSAGE" value="add all settings" />
+    <MESSAGE value="cleanup old counter" />
+    <MESSAGE value="update idea workspace" />
+    <option name="LAST_COMMIT_MESSAGE" value="update idea workspace" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>

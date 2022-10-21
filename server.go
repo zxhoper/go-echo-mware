@@ -25,7 +25,7 @@ func NewStats() *Stats {
 	}
 }
 
-// Process is the middleware function.
+// MiddlewareFirst is the middleware function.
 func (s *Stats) Process(next echo.HandlerFunc) echo.HandlerFunc {
 	return func(c echo.Context) error {
 		if err := next(c); err != nil {

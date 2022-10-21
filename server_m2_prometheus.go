@@ -1,37 +1,96 @@
 package main
 
 import (
+	"fmt"
 	"github.com/labstack/echo/v4"
 	"net/http"
+	"time"
 )
 
-// Process is the middleware function.
-func Process(next echo.HandlerFunc) echo.HandlerFunc {
+// MiddlewareFirst is the middleware function.
+//   - Store Value to Context:
+//     You can use echo.Context.Set and echo.Context.Get
+//     to store value in middleware into context
+//     and get that value from context in downstream
+//     middlewares or handler
+func MiddlewareFirst(next echo.HandlerFunc) echo.HandlerFunc {
 	return func(c echo.Context) error {
+		// TODO: something
+		fmt.Printf(" Mark -> Time:%s, Hit MiddlewareFirst middleware\n", time.Now())
+
+		///////// try echo.Context.Set and echo.Context.Get //////////
+		i := 1
+		// Use echo.Context.Set and echo.Context.Get
+		// to store value in middleware into context
+		c.Set("CounterInContext", i)
+		fmt.Printf(" CounterInContext -> %d in MiddlewareFirst middleware, -> Time:%s\n",
+			c.Get("CounterInContext").(int),
+			time.Now())
+		//\\\\\\\ try echo.Context.Set and echo.Context.Get //////////
+
 		if err := next(c); err != nil {
 			c.Error(err)
 		}
-		// TODO: something
 		return nil
 	}
 }
 
-// Handle is the endpoint to get stats.
-func Handle(c echo.Context) error {
-	s := "Hit stats endpoint"
-	return c.JSON(http.StatusOK, s)
+// MiddlewareSecond is the middleware function.
+func MiddlewareSecond(next echo.HandlerFunc) echo.HandlerFunc {
+	return func(c echo.Context) error {
+
+		// TODO: something
+		fmt.Printf(" Mark -> Time:%s, Hit MiddlewareSecond middleware\n", time.Now())
+
+		///////// try echo.Context.Set and echo.Context.Get //////////
+		i := c.Get("CounterInContext").(int)
+		fmt.Printf(" CounterInContext -> %d in MiddlewareSecond middleware before increment-> Time:%s\n",
+			i,
+			time.Now())
+		i++
+		c.Set("CounterInContext", i)
+		fmt.Printf(" CounterInContext -> %d in MiddlewareSecond middleware-> Time:%s\n",
+			c.Get("CounterInContext").(int),
+			time.Now())
+		//\\\\\\\ try echo.Context.Set and echo.Context.Get //////////
+
+		if err := next(c); err != nil {
+			c.Error(err)
+		}
+		return nil
+	}
 }
 
-// ServerHeader middleware adds a `Server` header to the response.
-func ServerHeader(next echo.HandlerFunc) echo.HandlerFunc {
+// MiddlewareAddServerHeader middleware adds a `Server` header to the response.
+func MiddlewareAddServerHeader(next echo.HandlerFunc) echo.HandlerFunc {
 	return func(c echo.Context) error {
-		c.Response().Header().Set(echo.HeaderServer, "Echo/3.0")
+		c.Response().Header().Set(echo.HeaderServer, "Echo/4.0")
 
 		/////////// m1 add a custom header /////////////
-		c.Response().Header().Set("MyOwnHeader", "Homerun")
+		c.Response().Header().Set("MyOwnHeader", "Home run")
 
-		return next(c)
+		fmt.Printf(" Mark -> Time:%s, Hit MiddlewareAddServerHeader middleware\n", time.Now())
+
+		if err := next(c); err != nil {
+			c.Error(err)
+		}
+		return nil
 	}
+}
+
+// myRootHandler is the main endpoint
+func myRootHandler(c echo.Context) error {
+
+	fmt.Printf(" Mark -> Time:%s, Hit Endpoint [myRootHandler] \n\n\n\n", time.Now())
+
+	return c.String(http.StatusOK, "Hello, World!\n\n\n")
+}
+
+// myStatsHandle is the second endpoint
+func myStatsHandle(c echo.Context) error {
+	s := "Hit StatsHandle endpoint\n\n\n"
+	fmt.Printf(" Mark -> Time:%s, Hit Endpoint [myStatsHandle] \n\n\n\n", time.Now())
+	return c.JSON(http.StatusOK, s)
 }
 
 func main() {
@@ -40,20 +99,16 @@ func main() {
 	// Debug mode
 	e.Debug = true
 
-	//-------------------
-	// Custom middleware
-	//-------------------
-	// Stats
-	e.Use(Process)
-	e.GET("/stats", Handle) // Endpoint to main process
+	// Add AddServerHeader middleware to all endpoints
+	e.Use(MiddlewareAddServerHeader)
 
-	// Server header
-	e.Use(ServerHeader)
+	// Add MiddlewareFirst middleware to all endpoints
+	e.Use(MiddlewareFirst)
+
+	e.GET("/stats", myStatsHandle) // Second Endpoint
 
 	// Handler
-	e.GET("/", func(c echo.Context) error {
-		return c.String(http.StatusOK, "Hello, World!")
-	})
+	e.GET("/", myRootHandler, MiddlewareSecond)
 
 	// Start server
 	e.Logger.Fatal(e.Start(":1323"))
