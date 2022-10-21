@@ -1,4 +1,4 @@
-package main
+package server001
 
 import (
 	"net/http"

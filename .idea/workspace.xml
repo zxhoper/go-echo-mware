@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fbcebd4c-9738-4ca6-80d0-14a956424fac" name="Changes" comment="update idea workspace">
+    <list default="true" id="fbcebd4c-9738-4ca6-80d0-14a956424fac" name="Changes" comment="Copy to m3 prometheus counter">
+      <change afterPath="$PROJECT_DIR$/server003prometheusCounter/server_m3_prometheus_counter.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/server.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_m1.go" beforeDir="false" afterPath="$PROJECT_DIR$/server_m1.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_m2_prometheus.go" beforeDir="false" afterPath="$PROJECT_DIR$/server_m2_prometheus.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/server000/server.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server_m1.go" beforeDir="false" afterPath="$PROJECT_DIR$/server001/server_m1.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server_m2_prometheus.go" beforeDir="false" afterPath="$PROJECT_DIR$/server002cleanup/server_m2_prometheus.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,8 +50,15 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/server003prometheusCounter" />
+      <recent name="$PROJECT_DIR$/server002cleanup" />
+      <recent name="$PROJECT_DIR$/server001" />
+      <recent name="$PROJECT_DIR$/server000" />
+      <recent name="$PROJECT_DIR$/old_main" />
+    </key>
   </component>
-  <component name="RunManager" selected="Go Build.go build server_m2_prometheus.go">
+  <component name="RunManager" selected="Go Build.go build server_m3_prometheus_counter.go">
     <configuration name="go build server.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="go-echo-middleware" />
       <working_directory value="$PROJECT_DIR$" />
@@ -76,8 +86,28 @@
       <filePath value="$PROJECT_DIR$/server_m2_prometheus.go" />
       <method v="2" />
     </configuration>
+    <configuration name="go build server_m2_prometheus_start.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="go-echo-middleware" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <package value="learnmiddleware" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/server_m2_prometheus_start.go" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build server_m3_prometheus_counter.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="go-echo-middleware" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <package value="learnmiddleware" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/server003prometheusCounter/server_m3_prometheus_counter.go" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Build.go build server_m3_prometheus_counter.go" />
+        <item itemvalue="Go Build.go build server_m2_prometheus_start.go" />
         <item itemvalue="Go Build.go build server_m2_prometheus.go" />
         <item itemvalue="Go Build.go build server_m1.go" />
         <item itemvalue="Go Build.go build server.go" />
@@ -115,7 +145,10 @@
     <MESSAGE value="add all settings" />
     <MESSAGE value="cleanup old counter" />
     <MESSAGE value="update idea workspace" />
-    <option name="LAST_COMMIT_MESSAGE" value="update idea workspace" />
+    <MESSAGE value="middleware ok" />
+    <MESSAGE value="m2 counter ok" />
+    <MESSAGE value="Copy to m3 prometheus counter" />
+    <option name="LAST_COMMIT_MESSAGE" value="Copy to m3 prometheus counter" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
